@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# La Ventana Frontend
 
-## Getting Started
+[![My Skills](https://skillicons.dev/icons?i=next,git,docker,ts,pnpm)](https://skillicons.dev)
 
-First, run the development server:
+![React](https://img.shields.io/badge/React-17.0.2-blue?style=flat-square&logo=react&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-12.0.7-black?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.4.3-blue?style=flat-square&logo=typescript&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-20.10.7-blue?style=flat-square&logo=docker&logoColor=white)
+![NextUI](https://img.shields.io/badge/NextUI-2.4.8-blue?style=flat-square&logo=nextui&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-4.1.17-blue?style=flat-square&logo=framer&logoColor=white)
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Running with Docker](#running-with-docker)
+
+## Features
+
+- Modern and responsive user interface.
+- Multi-language support.
+- Reusable components.
+- Integration with Next.js for routing and performance optimization.
+
+## Technologies Used
+
+- **React**: JavaScript library for building user interfaces.
+- **Next.js**: React framework for server-side rendering and static site generation.
+- **NextUI**: UI component library for React.
+- **Framer Motion**: Library for animations in React.
+- **TypeScript**: Superset of JavaScript that adds static typing.
+- **Docker**: Containerization platform to run applications in isolated environments.
+
+## Project Structure
+
+The project structure is as follows:
+
+la-ventana-front/
+├── public/ # Static files
+│ ├── argentina.png # Flag image
+│ └── README.md # Documentation for the folder
+├── src/ # Source code
+│ ├── actions/ # State management actions
+│ ├── components/ # User interface components
+│ │ ├── custom/ # Custom components
+│ │ ├── modules/ # Modular components
+│ │ ├── navbar/ # Navigation bar component
+│ │ └── ui/ # UI components
+│ ├── constants/ # Constants used in the application
+│ ├── cypress/ # End-to-end tests
+│ ├── hooks/ # Custom hooks
+│ ├── providers/ # Context providers
+│ ├── store/ # Global state management
+│ ├── types/ # TypeScript types
+│ └── tests/ # Unit tests
+├── README.md # Main documentation
+└── package.json # Dependencies and scripts
+
+## Installation
+
+To install the project, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone git@gitlab.com:ct-team/la-ventana-front.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd la-ventana-front
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+## Usage
+
+To start the application in development mode, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the development server, and you can access the application at <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running with Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+docker-compose up -d
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This command will start the application in detached mode. You can access the application at <http://localhost:3001>.
