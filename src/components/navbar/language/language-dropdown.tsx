@@ -35,11 +35,10 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     <div
       ref={ref}
       className={`
-        relative
         flex
         justify-center
         bg-background
-        w-20
+        w-20 border
         rounded-bl-lg
         `}
     >
@@ -55,8 +54,8 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
           px-2
           py-0
           border-none
-          w-sm
-          max-h-[30px]
+          w-sm h-6
+          max-h-[24px]
           `}
       >
         <div
@@ -64,16 +63,16 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
           relative
           w-full
           h-auto
-          min-w-[10px]
-          max-w-[22px]
+          min-w-[6px]
+          max-w-[20px]
           shadow-sm
           `}
         >
           <Image
             src={'/argentina.png'}
             alt={'flag language'}
-            width={10}
-            height={10}
+            width={6}
+            height={6}
             className={`
               rounded-full
               w-full
