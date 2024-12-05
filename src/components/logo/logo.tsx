@@ -1,18 +1,19 @@
-import { ImageProps } from '@/types';
-import Image from 'next/image';
+'use client';
 
-export const Logo: React.FC<ImageProps> = (imgSrc) => {
-  const { src, alt = 'logo la-ventanaweb' } = imgSrc;
-  return (
-    <div className='relative w-full h-auto min-w-sm max-w-[8rem] sm:w-[100px] xl:w-[200px]'>
-      <Image
-        src={src}
-        alt={alt}
-        priority
-        quality={100}
-        width={750}
-        height={800}
-      />
-    </div>
-  );
+import { useResponsive } from '@/hooks/useResponsive';
+import { ImageProps } from '@/types';
+import { MobileLogo } from './responsive/mobile-logo';
+import { TabletLogo } from './responsive/tablet-logo';
+import { DesktopLogo } from './responsive/desktop-logo';
+
+export const Logo: React.FC<ImageProps> = (props) => {
+  const { currentBreakpoint } = useResponsive();
+  const { src, alt } = props;
+
+  if (currentBreakpoint === 'xs') return <MobileLogo src={src} alt={alt} />;
+
+  if (['sm', 'md'].includes(currentBreakpoint))
+    return <TabletLogo src={src} alt={alt} />;
+
+  return <DesktopLogo src={src} alt={alt} />;
 };
