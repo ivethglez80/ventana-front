@@ -12,6 +12,7 @@
 ## Table of Contents
 
 - [Features](#features)
+- [Sections](#sections)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
@@ -24,6 +25,10 @@
 - Multi-language support.
 - Reusable components.
 - Integration with Next.js for routing and performance optimization.
+
+## Sections
+
+- Services
 
 ## Technologies Used
 
