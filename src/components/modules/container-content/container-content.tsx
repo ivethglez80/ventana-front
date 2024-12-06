@@ -14,7 +14,7 @@ const ContainerContent = ({
         relative
         mt-[4rem]
         w-full
-        h-screen
+        min-h-screen
         flex
         flex-col
         min-w-screen
