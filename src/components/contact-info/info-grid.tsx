@@ -14,7 +14,7 @@ export const InfoGrid: React.FC<InfoGridProps> = ({
   return (
     <div
       id='contacto-info'
-      className='w-full mt-10 bg-pallete-black py-4'
+      className='w-full bg-pallete-black py-4'
     >
           <div className={`
         
