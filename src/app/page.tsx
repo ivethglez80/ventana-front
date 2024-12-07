@@ -1,5 +1,5 @@
 import { Services } from '@/components/services/services';
-
+import {ContactInfo} from '@/components/contact-info/contact-info'
 const Home = () => {
   return (
     <main
@@ -10,6 +10,7 @@ const Home = () => {
     `}
     >
       {/* features */}
+      <ContactInfo/>
       <Services />
     </main>
   );
