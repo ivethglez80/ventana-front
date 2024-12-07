@@ -1,9 +1,9 @@
-import { Breakpoint } from '@/config/interfaces/breakpoints-interface';
 import { getBreakpoint } from '@/config/get-breakpoints';
+import { Breakpoint } from '@/config/interfaces/breakpoints-interface';
 import { useEffect, useState } from 'react';
 
 export function useResponsive() {
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('xs');
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('lg');
   const [windowSize, setWindowSize] = useState({
     width: 0,
     height: 0,
