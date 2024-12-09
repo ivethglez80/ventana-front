@@ -11,7 +11,7 @@ export const WrapperMain: React.FC<WrapperMainProps> = ({
   className= ''
 }) => {
   return (
-    <div className={`flex justify-center mt-10 lg:bg-[#f0f0f0] ${className}`}>
+    <div className={`flex justify-center lg:bg-[#f0f0f0] ${className}`}>
       <div className='lg:w-7/12 h-fit flex flex-col items-center w-full'>
         <Reviews />
         <Newsletter />
