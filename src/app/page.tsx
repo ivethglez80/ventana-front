@@ -2,6 +2,7 @@ import { Services } from '@/components/services/services';
 import {ContactInfo} from '@/components/contact-info/contact-info'
 import { GoogleMap } from '@/components/map/map-location';
 import { WrapperMain } from '@/components/modules/wrapper-main/wrapper-main';
+import {Consultas} from '@/components/contact-form/consultas';
 const Home = () => {
   return (
     <main
@@ -12,7 +13,8 @@ const Home = () => {
     `}
     >
       {/* features */}
-      <WrapperMain/>
+      <WrapperMain />
+      <Consultas/>
       <GoogleMap />
       <ContactInfo />
       <Services />
