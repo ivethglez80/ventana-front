@@ -5,6 +5,7 @@ import { WrapperMain } from '@/components/modules/wrapper-main/wrapper-main';
 import { Consultas } from '@/components/contact-form/consultas';
 import { Shows } from '@/components/shows/shows';
 import { MenuGallery } from '@/components/menu/menu-gallery';
+import { Anexo } from '@/components/anexo/anexo';
 const Home = () => {
   return (
     <main
@@ -15,6 +16,7 @@ const Home = () => {
     `}
     >
       {/* features */}
+      <Anexo/>
       <MenuGallery/>
       <Shows />
       <WrapperMain />
