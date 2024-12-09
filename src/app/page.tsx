@@ -1,7 +1,7 @@
 import { Services } from '@/components/services/services';
 import {ContactInfo} from '@/components/contact-info/contact-info'
 import { GoogleMap } from '@/components/map/map-location';
-import { Newsletter } from '@/components/newsletter/newsletter';
+import { WrapperMain } from '@/components/modules/wrapper-main/wrapper-main';
 const Home = () => {
   return (
     <main
@@ -12,11 +12,7 @@ const Home = () => {
     `}
     >
       {/* features */}
-      <div className='flex justify-center'>
-        <div className='lg:w-7/12 h-fit flex flex-col items-center w-full'>
-          <Newsletter />
-        </div>
-      </div>
+      <WrapperMain/>
       <GoogleMap />
       <ContactInfo />
       <Services />
