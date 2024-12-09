@@ -10,18 +10,19 @@ export const Newsletter: React.FC = () => {
   return (
     <section
       id='suscribe'
-      className={`w-full bg-[#f0f0f0] mt-10 border-t-1 border-black sm:border-none lg:bg-white lg:bg-transparent flex justify-center py-4 md:mx-0 md:min-h-[100px] ${fontMontserrat.className} antialiased`}
+      className={`w-full border-t-1 border-black sm:border-none bg-[#f0f0f0] lg:bg-transparent flex justify-center py-4 md:mx-0 md:min-h-[100px] ${fontMontserrat.className} antialiased`}
     >
       <Toaster richColors />
 
       <div
         className={`
           w-full
+          bg-[#f0f0f0] 
         lg:bg-white
-        sm:rounded-lg
-        lg:rounded-l-lg
-        sm:bg-transparent
-        lg:shadow
+          sm:rounded-lg
+          lg:rounded-l-lg
+          sm:bg-transparent
+          lg:shadow
         `}
       >
         <div className='w-full flex flex-col items-center lg:flex-row'>
