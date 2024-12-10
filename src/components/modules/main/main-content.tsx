@@ -13,6 +13,7 @@ const MainContent = ({
         w-full
         flex-grow
         min-w-full
+        overflow-x-hidden
         `}
     >
       {children}

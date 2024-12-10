@@ -1,21 +1,17 @@
-import { Service } from '@/types';
+import type { Service } from '@/types';
 import { ResponsiveServiceCard } from './responsive-card';
 import { fontRubik } from '@/fonts/fonts';
 
 interface ServiceGridProps {
   services: Service[];
   title: string;
-  gridColumns?: number;
-  py?: number;
-  gap?: number;
+  extend: string
 }
 
 export const ServiceGrid: React.FC<ServiceGridProps> = ({
   services,
   title,
-  gap = 0,
-  py=0,
-  gridColumns = 2,
+  extend
 }) => (
   <div className='flex flex-col'>
     <div
@@ -33,7 +29,7 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({
     >
       {title}
     </div>
-    <div className={`responsive-container grid grid-cols-${gridColumns} gap-${gap} py-${py} bg-pallete-black`}>
+    <div className={`responsive-container grid ${extend} bg-pallete-black`}>
       {services.map((service, i) => (
         <ResponsiveServiceCard key={i} service={service} />
       ))}

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { getBreakpoint } from '@/config/get-breakpoints';
+import { Breakpoint } from '@/config/interfaces/breakpoints-interface';
+import { useEffect, useState } from 'react';
 
-type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-export const useResponsive = () => {
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('xs');
+export function useResponsive() {
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('lg');
   const [windowSize, setWindowSize] = useState({
     width: 0,
     height: 0,
@@ -12,14 +12,9 @@ export const useResponsive = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
+      const breakpoint = getBreakpoint(width);
+
       setWindowSize({ width, height: window.innerHeight });
-
-      let breakpoint: Breakpoint = 'xs';
-      if (width >= 640) breakpoint = 'sm';
-      if (width >= 768) breakpoint = 'md';
-      if (width >= 1024) breakpoint = 'lg';
-      if (width >= 1280) breakpoint = 'xl';
-
       setCurrentBreakpoint(breakpoint);
     };
 
@@ -35,5 +30,6 @@ export const useResponsive = () => {
     isMobile: currentBreakpoint === 'xs',
     isTablet: ['sm', 'md'].includes(currentBreakpoint),
     isDesktop: ['lg', 'xl'].includes(currentBreakpoint),
+    isBreakpoint: (bp: Breakpoint) => currentBreakpoint === bp,
   };
-};
+}

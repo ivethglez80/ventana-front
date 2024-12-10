@@ -4,7 +4,7 @@ import { useResponsive } from '@/hooks/useResponsive';
 import { MobileServices } from './responsive/services-mobile';
 import { TabletServices } from './responsive/services-tablet';
 import { DesktopServices } from './responsive/services-desktop';
-import { Service } from '@/types';
+import type { Service } from '@/types';
 
 export const Services: React.FC = () => {
   const { currentBreakpoint } = useResponsive();
@@ -19,7 +19,7 @@ export const Services: React.FC = () => {
     },
     'lg|xl|2xl|3xl': {
       Component: DesktopServices,
-      filter: (s: Service) =>  s.desktop,
+      filter: (s: Service) => s.desktop,
     },
   };
 
