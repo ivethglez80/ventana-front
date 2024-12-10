@@ -7,6 +7,7 @@ import { Shows } from '@/components/shows/shows';
 import { MenuGallery } from '@/components/menu/menu-gallery';
 import { Anexo } from '@/components/anexo/anexo';
 import { Salones } from '@/components/salones/salones';
+import { Search } from '@/components/search/search';
 const Home = () => {
   return (
     <main
@@ -18,6 +19,7 @@ const Home = () => {
     >
       {/* features */}
       <Salones/>
+      <Search/>
       <Anexo/>
       <MenuGallery/>
       <Shows />
