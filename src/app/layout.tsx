@@ -48,7 +48,9 @@ export default function RootLayout({
           {/* header */}
           <HeaderContent />
           {/* main and footer */}
-          <ContainerContent children={children} />
+          <ContainerContent  >
+            {children}
+          </ContainerContent>
         </ProviderUI>
       </body>
     </html>

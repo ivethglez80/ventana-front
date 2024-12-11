@@ -45,7 +45,7 @@ export const Card: React.FC<CardProps> = ({
 
   useEffect(() => {
     validateProps();
-  }, []);
+  });
 
   if (validationErrors) {
     return <CardValidationErrors errors={validationErrors} />;

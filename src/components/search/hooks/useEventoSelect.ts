@@ -1,9 +1,14 @@
 import { SearchFormData } from '@/actions/search/types/search.types';
 import { useCallback, useMemo } from 'react';
-import { Control, useWatch, useFormContext } from 'react-hook-form';
+import { Control, UseFormSetValue, useWatch } from 'react-hook-form';
 import { eventos } from '../mock/data';
 
-export function useEventoSelection(control: Control<SearchFormData>, setValue: Function) {
+interface SelectionProps {
+  control: Control<SearchFormData>;
+  setValue: UseFormSetValue<SearchFormData>;
+}
+
+export function useEventoSelection({control, setValue}:SelectionProps) {
 
   const eventoValue = useWatch({
     control,

@@ -1,4 +1,3 @@
-import { SearchParams } from "next/dist/server/request/search-params";
 import { SearchFormData } from "../types/search.types";
 
 export class SearchService {

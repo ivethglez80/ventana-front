@@ -1,4 +1,4 @@
-import React, { ErrorInfo, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 type FallbackRender = (error: Error) => ReactNode;
 type FallbackNode = ReactNode | FallbackRender;
@@ -6,6 +6,7 @@ type FallbackNode = ReactNode | FallbackRender;
 interface ErrorBoundaryProps {
   children: ReactNode;
   fallback?: FallbackNode | FallbackRender;
+  onError?: (error: Error) => void;
 }
 
 interface ErrorBoundaryState {
@@ -25,12 +26,19 @@ export class ErrorBoundary extends React.Component<
     };
   }
 
-  // detect errors on board
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    console.error('Error capturado en getDerivedStateFromError:', error);
     return {
       hasError: true,
       error,
     };
+  }
+
+  componentDidCatch(error: Error) {
+    console.error('Error capturado en componentDidCatch:', error);
+    if (this.props.onError) {
+      this.props.onError(error);
+    }
   }
 
   resetError = () => {
@@ -50,7 +58,6 @@ export class ErrorBoundary extends React.Component<
         return this.props.fallback;
       }
 
-      // default
       return (
         <div className='error-boundary-fallback'>
           <h2>Algo salió mal</h2>
@@ -64,14 +71,22 @@ export class ErrorBoundary extends React.Component<
   }
 }
 
-// wrapper error component
 export function withErrorBoundary<P extends object>(
   WrappedComponent: React.ComponentType<P>,
-  fallback?: FallbackNode
+  options?: {
+    fallback?: FallbackNode;
+    onError?: (error: Error) => void;
+  }
 ) {
-  return (props: P) => (
-    <ErrorBoundary fallback={fallback}>
+  const ComponentWithErrorBoundary = (props: P) => (
+    <ErrorBoundary fallback={options?.fallback} onError={options?.onError}>
       <WrappedComponent {...props} />
     </ErrorBoundary>
   );
+
+  ComponentWithErrorBoundary.displayName = `WithErrorBoundary(${
+    WrappedComponent.displayName || WrappedComponent.name || 'Component'
+  })`;
+
+  return ComponentWithErrorBoundary;
 }

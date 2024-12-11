@@ -5,18 +5,25 @@ import { siteConfig } from '@/config/site';
 
 interface NavLinksProps {
   isMobile: boolean;
-  onMobileLinkClick: (value: boolean) => void;
+  onMobileLinkClick: () => void;
 }
 
 export const NavLinks: React.FC<NavLinksProps> = ({
   isMobile,
   onMobileLinkClick,
 }) => {
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      onMobileLinkClick()
+    }
+  }
+
   return (
     <ul
       className={`${
         isMobile
-          ? `
+        ? `
           flex 
           flex-col 
           items-center 
@@ -51,7 +58,7 @@ export const NavLinks: React.FC<NavLinksProps> = ({
               duration-100
               sm:p-2
               `}
-            onClick={() => isMobile && onMobileLinkClick(false)}
+            onClick={handleLinkClick}
           >
             {item.label}
           </Link>

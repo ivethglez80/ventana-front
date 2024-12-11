@@ -2,7 +2,7 @@
 
 import { useSearch } from '@/actions/search/hooks/useSearch';
 import { searchSchema } from '@/actions/search/schemas/search-schema';
-import { SearchFormData } from '@/actions/search/types/search.types';
+import { SearchFormData, SearchFormErrors } from '@/actions/search/types/search.types';
 import { useValidation } from '@/hooks/useValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@nextui-org/react';
@@ -49,7 +49,7 @@ export const SearchForm: React.FC = () => {
     }
   };
 
-  const onError = (errors: Record<string, any>) => {
+  const onError = (errors: SearchFormErrors) => {
     Object.values(errors).forEach((error) => {
       toast.error(error.message);
     });

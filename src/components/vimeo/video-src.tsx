@@ -20,11 +20,11 @@ export const VideoSrc: React.FC<VimeoVideoProps> = ({
   muted = true,
 }) => {
   const [src, setSrc] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!validateVideoId(videoId)) {
-      setError('ID de video inválido');
+      console.log('ID de video inválido');
       return;
     }
 

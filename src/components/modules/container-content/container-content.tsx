@@ -20,7 +20,12 @@ const ContainerContent = ({
         min-w-screen
         `}
     >
-      <MainContent children={children} />
+      <MainContent 
+      >
+        {children}
+
+
+      </MainContent>
 
       <FooterContent />
     </main>

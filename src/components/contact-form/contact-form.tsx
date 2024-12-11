@@ -6,20 +6,19 @@ import { Textarea as TextareaCustom } from '@/components/ui/textarea';
 import { useValidation } from '@/hooks/useValidation';
 import { contactFormSchema } from '@/actions/contact-form/schemas/schema-contact-form';
 import { useContactForm } from '@/actions/contact-form/hooks/useContactForm';
-import { ContactFormData } from '@/actions/contact-form/types/contact-form.types';
+import { ContactFormData, ContactFormErrors } from '@/actions/contact-form/types/contact-form.types';
 import {Input as CustomInput} from '@/components/ui/input'
 
 
 export const ContactForm = () => {
   const { validate } = useValidation(contactFormSchema)
-  const {submitContact, loading} = useContactForm()
+  const {submitContact} = useContactForm()
 
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -32,7 +31,6 @@ export const ContactForm = () => {
     },
   });
 
-  // const { content, email, lastName, name, whatsApp, subscribe } = watch();
 
   const onSubmit = async (data: ContactFormData) => {
     const validationResult = validate(data)
@@ -50,8 +48,7 @@ export const ContactForm = () => {
 
   };
 
-  const onError = (errors: Record<string, any>) => {
-    console.log(errors);
+  const onError = (errors: ContactFormErrors) => {
     if (errors.name) {
       toast.error(errors.name.message);
     }

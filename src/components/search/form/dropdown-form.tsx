@@ -1,5 +1,5 @@
 'use client';
-import { Controller, Control } from 'react-hook-form';
+import { Controller, Control, UseFormSetValue } from 'react-hook-form';
 import { 
   Dropdown, 
   DropdownTrigger, 
@@ -15,7 +15,7 @@ import { TicketIcon } from '@/components/icons';
 
 interface EventosDropdownProps {
   control: Control<SearchFormData>;
-  setValue: (name: keyof SearchFormData, value: any) => void;
+  setValue: UseFormSetValue<SearchFormData>;
 }
 
 export const DropdownForm: React.FC<EventosDropdownProps> = ({ 
@@ -23,16 +23,16 @@ export const DropdownForm: React.FC<EventosDropdownProps> = ({
   setValue 
 }) => {
   const { handleEventoSelect, selectedEventoName } = useEventoSelection(
-    control,
-    setValue
+    {control,
+    setValue}
   );
 
   return (
     <Controller
       name='evento'
       control={control}
-      render={({ field }) => (
-        <div>
+      render={() => (
+        <div >
           <label
             htmlFor='idShow'
             className={`mt-1 ${fontMontserrat.className} font-semibold uppercase`}
@@ -46,7 +46,7 @@ export const DropdownForm: React.FC<EventosDropdownProps> = ({
               </Button>
             </DropdownTrigger>
             <DropdownMenu
-              aria-label='Eventos disponibles'
+              aria-label={`Eventos disponibles`}
               onAction={handleEventoSelect}
             >
               {eventos.map((evento) => (

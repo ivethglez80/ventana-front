@@ -1,6 +1,7 @@
 import {z} from 'zod'
 import { searchSchema } from '../schemas/search-schema';
 import { DateValue } from '@nextui-org/react';
+import { FieldErrors } from 'react-hook-form';
 
 export type SearchSchemaType = z.infer<typeof searchSchema>;
 
@@ -14,3 +15,4 @@ export interface SearchResult {
   message: string;
   code?: string;
 }
+export type SearchFormErrors = FieldErrors<SearchFormData>;
