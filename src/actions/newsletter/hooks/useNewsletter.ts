@@ -9,7 +9,6 @@ export function useNewsletter() {
   const subscribe = async (email: string) => {
     setLoading(true);
     try {
-
       const result = newsletterSchema.safeParse({
         email,
         source: 'web',
@@ -31,7 +30,24 @@ export function useNewsletter() {
         return false;
       }
     } catch (error) {
-      toast.error('Error inesperado');
+
+      if (error instanceof Error) {
+
+        console.error('Newsletter subscription error:', error.message);
+
+        if (error.message.includes('network')) {
+          toast.error('Error de red. Por favor, comprueba tu conexión.');
+        } else if (error.message.includes('invalid')) {
+          toast.error('El email proporcionado no es válido.');
+        } else {
+          toast.error(`Error inesperado: ${error.message}`);
+        }
+      } else {
+
+        toast.error('Ocurrió un error desconocido');
+        console.error('Unexpected error type:', error);
+      }
+
       return false;
     } finally {
       setLoading(false);

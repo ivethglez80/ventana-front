@@ -18,7 +18,6 @@ export const createContact = async (formData: FormData) => {
     const parsedData = contactFormSchema.parse(data);
 
     // create
-    console.log('Contacto creado:', parsedData);
 
     // implement action newsletter
     if (parsedData.subscribe) {

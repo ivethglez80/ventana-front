@@ -1,14 +1,13 @@
 import React from 'react';
 
 interface CardBodyProps {
-  availability: string;
+  availability?: string;
   showTime: string;
   price: number;
   currency: string;
 }
 
 export const CardBody: React.FC<CardBodyProps> = ({
-  availability,
   showTime,
   price,
   currency,

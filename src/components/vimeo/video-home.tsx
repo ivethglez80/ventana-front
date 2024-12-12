@@ -1,5 +1,4 @@
 import {VideoSrc} from './video-src';
-import dynamic from 'next/dynamic';
 
 export const VimeoVideo: React.FC = () => {
   const videoConfig = {

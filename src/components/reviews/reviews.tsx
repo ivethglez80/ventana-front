@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, Button, Spacer } from '@nextui-org/react';
 import { fontMontserrat } from '@/fonts/fonts';
 import { ChevronRight, ChevronLeft, Star } from '@/components/icons';
@@ -16,14 +16,14 @@ const reviewsData = [
 const AUTO_SLIDE_INTERVAL = 5000;
 
 export const Reviews: React.FC = () => {
-  const memoReviews = useMemo(() => reviewsData, []);
+  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === reviewsData.length - 1 ? 0 : prevIndex + 1
     );
-  }, [memoReviews.length]);
+  },[]);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -34,7 +34,7 @@ export const Reviews: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(handleNext, AUTO_SLIDE_INTERVAL);
     return () => clearInterval(interval);
-  }, []);
+  }, [handleNext]);
 
   return (
     <section

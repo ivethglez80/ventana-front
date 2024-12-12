@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { newsletterSchema } from '../schemas/newsletter-schema';
+import { FieldErrors } from 'react-hook-form';
 
 export interface NewsletterSubscription {
   email: string;
@@ -15,3 +16,5 @@ export interface SubscriptionResult {
 }
 
 export type NewsletterSchemaType = z.infer<typeof newsletterSchema>;
+
+export type NewsletterFormErrors = FieldErrors<NewsletterSchemaType>;

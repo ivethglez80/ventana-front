@@ -10,8 +10,7 @@ export class NewsletterService {
 
   async subscribe(data: NewsletterSchemaType): Promise<SubscriptionResult> {
     try {
-
-        const existingSubscription = this.subscriptions.find(
+      const existingSubscription = this.subscriptions.find(
         (sub) => sub.email === data.email
       );
 
@@ -39,9 +38,37 @@ export class NewsletterService {
         message: 'Suscripción exitosa',
       };
     } catch (error) {
+
+      if (error instanceof Error) {
+        console.error('Newsletter subscription error:', error.message);
+
+        if (error.message.includes('Email ya registrado')) {
+          return {
+            success: false,
+            message: 'El email ya está suscrito',
+            code: DUPLICATE_SUBSCRIPTION,
+          };
+        }
+
+        if (error.message.includes('inválidos')) {
+          return {
+            success: false,
+            message: 'Datos de suscripción inválidos',
+            code: 'INVALID_DATA',
+          };
+        }
+
+        return {
+          success: false,
+          message: error.message || 'Error en suscripción',
+          code: SUBSCRIPTION_ERROR,
+        };
+      }
+
+      console.error('Unexpected error in newsletter subscription:', error);
       return {
         success: false,
-        message: 'Error en suscripción',
+        message: 'Error inesperado en la suscripción',
         code: SUBSCRIPTION_ERROR,
       };
     }

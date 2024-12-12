@@ -16,8 +16,8 @@ interface LanguageData {
 interface LanguageDropdownProps {
   isOpen: boolean;
   ref: React.RefObject<HTMLDivElement>;
-  onToggle: (e?: React.MouseEvent) => void;
-  onClose: (value: boolean) => void;
+  onToggle: () => void;
+  onClose: () => void;
 }
 
 export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
@@ -30,6 +30,13 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     { code: 'en', name: 'Inglés', flag: '🇺🇸', pathImg: '/' },
     { code: 'es', name: 'Español', flag: '🇪🇸', pathImg: '/' },
   ];
+
+  const handleClose = () => {
+    if (isOpen) {
+      
+      onClose()
+    }
+  }
 
   return (
     <div
@@ -123,7 +130,7 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
                   text-foreground
                   hover:bg-pallete-gold
                   `}
-                onClick={() => onClose(false)}
+                onClick={handleClose}
               >
                 <span className='mr-2'>{lang.flag}</span>
                 {lang.name}

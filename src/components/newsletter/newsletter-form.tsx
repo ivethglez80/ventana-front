@@ -4,16 +4,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { useValidation } from '@/hooks/useValidation';
 import { useNewsletter } from '@/actions/newsletter/hooks/useNewsletter';
-import type { NewsletterSchemaType } from '@/actions/newsletter/types/newsletter.types';
+import type { NewsletterFormErrors, NewsletterSchemaType } from '@/actions/newsletter/types/newsletter.types';
 import { newsletterSchema } from '@/actions/newsletter/schemas/newsletter-schema';
 export const NewsletterForm = () => {
   const { validate } = useValidation(newsletterSchema);
-  const { subscribe, loading } = useNewsletter();
+  const { subscribe } = useNewsletter();
 
   const {
     control,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm<NewsletterSchemaType>({
@@ -38,7 +37,7 @@ export const NewsletterForm = () => {
     }
   };
 
-  const onError = (errors: Record<string, any>) => {
+  const onError = (errors: NewsletterFormErrors) => {
     if (errors.email) {
       console.log(errors);
       toast.error(`${errors.email.message}`);
