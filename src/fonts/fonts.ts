@@ -1,4 +1,4 @@
-import { Montserrat, Rubik } from 'next/font/google';
+import { Montserrat, Rubik, Poppins } from 'next/font/google';
 
 const fontMontserrat = Montserrat({
   subsets: ['latin'],
@@ -7,4 +7,10 @@ const fontMontserrat = Montserrat({
 });
 const fontRubik = Rubik({ subsets: ['latin'], variable: '--font-rubik' });
 
-export { fontMontserrat, fontRubik };
+const fontPoppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  weight: ['400', '600', '700'], 
+});
+
+export { fontMontserrat, fontRubik, fontPoppins };

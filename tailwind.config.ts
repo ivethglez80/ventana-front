@@ -11,6 +11,7 @@ const colors = {
   palleteAnexo: '#333333',
 };
 
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -44,6 +45,7 @@ const config: Config = {
         mono: ['var(--font-mono)', 'monospace'],
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
         rubik: ['var(--font-rubik)', 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
       },
       colors: {
         background: 'var(--background)',
@@ -55,6 +57,26 @@ const config: Config = {
         'pallete-accent': colors.palleteAccent,
         'pallete-title': colors.palleteTitle,
         'pallete-anexo': colors.palleteAnexo,
+        blueD : "#111827",
+        blueM : "#55757d",
+        blueB: "#007bff",
+        grayA: "#2a3f54",
+        grayD : "#1f2937",
+        grayM : "#1c2531",
+        grayL: "#73879c",
+        greenB: "#09da09",
+        c_one : "#794156", 
+        c_two : "#2b614e", 
+        c_three : "#79593b", 
+        c_four : "#504287", 
+        c_five : "#31666e", 
+        c_six : "#796b43", 
+        c_seven : "#295a7f", 
+        c_eigth : "#4e4679", 
+        c_nine : "#67432d", 
+        c_ten : "#3d3d73", 
+        c_eleven : "#2b614e", 
+        c_twelve : "#79593b", 
       },
       keyframes: {
         rotate180: {

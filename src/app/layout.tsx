@@ -7,6 +7,7 @@ import { ProviderUI } from '@/providers/nextui/provider-ui';
 import HeaderContent from '@/components/modules/header/header-content';
 import ContainerContent from '@/components/modules/container-content/container-content';
 
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -45,8 +46,8 @@ export default function RootLayout({
         )}
       >
         <ProviderUI themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
-          {/* header */}
-          <HeaderContent />
+          
+          
           {/* main and footer */}
           <ContainerContent  >
             {children}

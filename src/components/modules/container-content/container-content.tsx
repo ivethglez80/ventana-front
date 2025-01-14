@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import HeaderContent from "../header/header-content";
 import FooterContent from "../footer/footer-content";
 import MainContent from "../main/main-content";
 
@@ -6,13 +10,16 @@ const ContainerContent = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const pathname = usePathname();
+  const isAdmin = pathname.startsWith("/admin");
+
   return (
     <main
-      role='main'
-      id='container-content'
+      role="main"
+      id="container-content"
       className={`
         relative
-        mt-[4rem]
+        ${!isAdmin ? "mt-[4rem]" : ""}
         w-full
         min-h-screen
         flex
@@ -20,14 +27,9 @@ const ContainerContent = ({
         min-w-screen
         `}
     >
-      <MainContent 
-      >
-        {children}
-
-
-      </MainContent>
-
-      <FooterContent />
+      {!isAdmin && <HeaderContent />}
+      <MainContent>{children}</MainContent>
+      {!isAdmin && <FooterContent />}
     </main>
   );
 };
