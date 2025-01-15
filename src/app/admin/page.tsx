@@ -13,16 +13,16 @@ export default function Dashboard() {
     const [formData, setFormData] = useState(initialForm);
   const [emailError, setEmailError] = useState("");
  
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const email = e.target.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-    if (!email || emailRegex.test(email)) {
-      setEmailError("");
-    } else {
-      setEmailError("Por favor, ingresa un correo válido."); 
-    }
-    setFormData({ ...formData, email });
-  };
+  // const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const email = e.target.value;
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+  //   if (!email || emailRegex.test(email)) {
+  //     setEmailError("");
+  //   } else {
+  //     setEmailError("Por favor, ingresa un correo válido."); 
+  //   }
+  //   setFormData({ ...formData, email });
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

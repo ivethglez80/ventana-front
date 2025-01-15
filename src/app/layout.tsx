@@ -4,7 +4,7 @@ import { fontMontserrat } from '@/fonts/fonts';
 import clsx from 'clsx';
 import { siteConfig } from '@/config/site';
 import { ProviderUI } from '@/providers/nextui/provider-ui';
-import HeaderContent from '@/components/modules/header/header-content';
+// import HeaderContent from '@/components/modules/header/header-content';
 import ContainerContent from '@/components/modules/container-content/container-content';
 
 
