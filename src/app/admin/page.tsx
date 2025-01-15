@@ -86,6 +86,7 @@ export default function Dashboard() {
             <input 
             type="email" 
             placeholder="usuario"
+            onChange={handleEmailChange}
             className="bg-grayM rounded-lg p-2 text-grayM text-base w-full mt-6"
             />
              <input 
