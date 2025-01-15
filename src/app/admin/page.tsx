@@ -13,16 +13,16 @@ export default function Dashboard() {
     const [formData, setFormData] = useState(initialForm);
   const [emailError, setEmailError] = useState("");
  
-  // const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const email = e.target.value;
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-  //   if (!email || emailRegex.test(email)) {
-  //     setEmailError("");
-  //   } else {
-  //     setEmailError("Por favor, ingresa un correo válido."); 
-  //   }
-  //   setFormData({ ...formData, email });
-  // };
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const email = e.target.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    if (!email || emailRegex.test(email)) {
+      setEmailError("");
+    } else {
+      setEmailError("Por favor, ingresa un correo válido."); 
+    }
+    setFormData({ ...formData, email });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,23 +38,23 @@ export default function Dashboard() {
     // const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!; 
     // const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!; 
 
-    // try {
-    //   const response = await emailjs.send(
-    //     serviceID,
-    //     templateID,
-    //     {          
-    //       email: formData.email,         
-    //       password: formData.password,
-    //     },
-    //     userID
-    //   );
-    //   console.log("Correo enviado:", response.text);
-    //   alert("¡Formulario enviado exitosamente!");
-    //   setFormData(initialForm);
-    // } catch (error) {
-    //   console.error("Error al enviar el formulario:", error);
-    //   alert("Hubo un problema al enviar el formulario. Inténtalo más tarde.");
-    // }
+    try {
+      // const response = await emailjs.send(
+      //   serviceID,
+      //   templateID,
+      //   {          
+      //     email: formData.email,         
+      //     password: formData.password,
+      //   },
+      //   userID
+      // );
+      // console.log("Correo enviado:", response.text);
+      alert("¡Formulario enviado exitosamente!");
+      setFormData(initialForm);
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+      alert("Hubo un problema al enviar el formulario. Inténtalo más tarde.");
+    }
     alert("Datos recibidos. Email y contraseña enviados correctamente.");
   };
 
