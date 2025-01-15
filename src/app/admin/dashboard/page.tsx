@@ -120,7 +120,7 @@ export default function Dashboard() {
 
         {/* informs */}
         <div
-          className={`bg-red-300 absolute top-16 z-0
+          className={`absolute top-16 z-0
           ${menuExpanded ? "left-2 md:left-60" : "left-20 md:left-32"}
           `}
         >
