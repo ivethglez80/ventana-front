@@ -121,11 +121,12 @@ export default function Dashboard() {
         {/* informs */}
         <div
           className={`absolute top-16 z-0
-          ${menuExpanded ? "left-2 md:left-60" : "left-20 md:left-32"}
+          ${menuExpanded ? "left-2 md:left-60 w-full pr-4" : "left-20 md:left-32"}
           `}
         >
           {renderContent()}
         </div>
+
       </div>
     </>
   );

@@ -25,7 +25,7 @@ export default function Discounts_New () {
                 Código
             </p>
             <input type="text" 
-            className="bg-blueD rounded-sm px-2 py-1"
+            className="inputDash"
             />
             </span>
 
@@ -35,7 +35,7 @@ export default function Discounts_New () {
                 </p>
                 <input type="text" 
                 placeholder="5%"
-                className=" bg-blueD rounded-sm px-2 py-1"
+                className="inputDash"
                 />
             </span>
         </div>
