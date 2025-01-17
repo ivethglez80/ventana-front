@@ -4,8 +4,7 @@ import { GiTicket } from "react-icons/gi";
 import { BsTrash3 } from "react-icons/bs";
 import { useState } from "react";
 import Switcher4 from "@/components/admin/buttons/toggleSwitch";
-import "react-toggle/style.css";
-import '@/styles/globals.css';
+
 
 
 export default function Discounts_All({ onEdit }: { onEdit: (descuento: any) => void }) {
