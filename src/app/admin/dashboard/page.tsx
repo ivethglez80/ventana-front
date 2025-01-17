@@ -16,6 +16,7 @@ import Menus_new from "@/components/admin-informs/menus/menus_new";
 import Menus_all from "@/components/admin-informs/menus/menus_all";
 import Opiniones_all from "@/components/admin-informs/opiniones/opiniones_all";
 import Opiniones_new from "@/components/admin-informs/opiniones/opiniones_new";
+import Opiniones_mod from "@/components/admin-informs/opiniones/opiniones_mod";
 import Suscripciones from "@/components/admin-informs/suscripciones/suscripciones";
 import GaleriaMenus_new from "@/components/admin-informs/galeriaMenus/galeriaMenus_new";
 import GaleriaMenus_all from "@/components/admin-informs/galeriaMenus/galeriaMenus_all";
@@ -35,7 +36,9 @@ export default function Dashboard() {
 
   const [selectedOption, setSelectedOption] = useState<string>("Home");
   const [editingDiscount, setEditingDiscount] = useState<any | null>(null);
+  const [editingOpinion, setEditingOpinion] = useState<any | null>(null);
   console.log("selectedOption:", selectedOption);
+
   const handleOptionChange = (option: string) => {
     setEditingDiscount(null); 
     setSelectedOption(option);
@@ -48,6 +51,11 @@ export default function Dashboard() {
           descuento={editingDiscount.descuento}
         />
       );
+    }
+    if (selectedOption === "opiniones_modify" && editingOpinion) {
+      return (
+        <Opiniones_mod  opinion={editingOpinion} />
+      )
     }
     switch (selectedOption) {
       case "Home":
@@ -80,7 +88,12 @@ export default function Dashboard() {
       case "opiniones-new":
         return <Opiniones_new />  
       case "opiniones-all":
-        return <Opiniones_all />
+        return <Opiniones_all
+        onEdit={(opinion) => {
+          setEditingOpinion(opinion); 
+          setSelectedOption("opiniones_modify")
+        }}
+        />
       case "Suscripciones":
         return <Suscripciones />
       case "galeriaMenus-new":

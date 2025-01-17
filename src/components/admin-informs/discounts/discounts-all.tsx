@@ -3,7 +3,7 @@
 import { GiTicket } from "react-icons/gi";
 import { BsTrash3 } from "react-icons/bs";
 import { useState } from "react";
-import Toggle from "react-toggle";
+import Switcher4 from "@/components/admin/buttons/toggleSwitch";
 import "react-toggle/style.css";
 import '@/styles/globals.css';
 
@@ -91,12 +91,11 @@ export default function Discounts_All({ onEdit }: { onEdit: (descuento: any) => 
                     {desc.descuento}
                   </td>                  
                   <td className="bg-grayM border-x-3 border-grayD pl-2 md:pl-4 cursor-pointer">                    
-                    <Toggle
-                      defaultChecked={desc.estado}
-                      aria-label="No label tag"
-                      icons={false}
-                      onChange={toggleEstado}
-                    />
+                 <Switcher4
+                    isChecked={desc.estado}
+                    onToggle={() => toggleEstado(desc.id)}
+                  />
+                
                   </td>
                   <td className="bg-grayM border-x-3 border-grayD pl-2 md:pl-4 hover:text-blueB ">
                     <BsTrash3 />

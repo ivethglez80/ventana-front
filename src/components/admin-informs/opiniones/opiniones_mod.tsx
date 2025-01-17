@@ -3,7 +3,28 @@ import BlueButton from "@/components/admin/buttons/blueButton";
 import { BiSave } from "react-icons/bi";
 import { useState } from "react";
 
-export default function Opiniones_new() {
+
+type OpinionesModProps = {
+    opinion: {
+      id: number;
+      langId: number;
+      img: string;
+      name: string;
+      title: string;
+      text: string;
+      valor: number;
+      date: string;
+      status: boolean;
+    };
+  };
+
+export default function Opiniones_mod ({ opinion }: OpinionesModProps) { 
+
+  const handleSave = () => {
+    console.log("Guardando cambios");
+    alert("Guardando...");
+  };
+
   const Langs = [
     {
         id:1,
@@ -20,21 +41,18 @@ export default function Opiniones_new() {
         name:"Ingles",
         code:"En"
     },
-  ]
+  ];
 
   const [selectedLang, setSelectedLang] = useState(Langs[0].id);
+  const [text, setText] = useState(opinion.text);
 
-  const handleSave = () => {
-    console.log("Guardando idioma:", Langs.find(lang => lang.id === selectedLang)?.name);
-    alert("Guardando...");
-  };
   return (
     <>
       <div className="bg-grayD h-full pb-6 w-full md:w-[700px] rounded-xl text-grayL px-6">
         <div className="flex flex-row gap-2 border-b-1 border-grayL pt-4 pb-2">
           <HiChatBubbleLeft className="text-2xl" />
           <p className="text-lg">
-            <b>Opinión  /</b> <span className="text-base">Nuevo</span>
+            <b>Opiniones  /</b> <span className="text-base">Editar</span>
           </p>
         </div>
 
@@ -44,6 +62,8 @@ export default function Opiniones_new() {
                 Texto
             </p>
             <textarea 
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             name="" 
             id=""
             rows={6}
