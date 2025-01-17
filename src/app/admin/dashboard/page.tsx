@@ -7,6 +7,7 @@ import Panoramic from "@/components/admin-informs/panoramic/panoramic";
 import Reservas from "@/components/admin-informs/reservas/reservas";
 import Discounts_All from "@/components/admin-informs/discounts/discounts-all";
 import Discounts_New from "@/components/admin-informs/discounts/discounts-new";
+import Discount_modify from "@/components/admin-informs/discounts/discounts-modify";
 import Pagos_All from "@/components/admin-informs/pagos/pagos_all";
 import Pagos_new from "@/components/admin-informs/pagos/pagos_new";
 import Shows_all from "@/components/admin-informs/shows/shows_all";
@@ -33,17 +34,35 @@ export default function Dashboard() {
   };
 
   const [selectedOption, setSelectedOption] = useState<string>("Home");
-  
-  console.log("selectedoption:",selectedOption);
-  
+  const [editingDiscount, setEditingDiscount] = useState<any | null>(null);
+  console.log("selectedOption:", selectedOption);
+  const handleOptionChange = (option: string) => {
+    setEditingDiscount(null); 
+    setSelectedOption(option);
+  };
   const renderContent = () => {
+    if (selectedOption === "discounts-modify" && editingDiscount) {
+      return (
+        <Discount_modify
+          opcion={editingDiscount.codigo}
+          descuento={editingDiscount.descuento}
+        />
+      );
+    }
     switch (selectedOption) {
       case "Home":
         return <Panoramic />;
       case "Reservas":
         return <Reservas />;
-      case "discounts-all":
-        return <Discounts_All />;
+        case "discounts-all":
+          return (
+            <Discounts_All
+              onEdit={(descuento) => {
+                setEditingDiscount(descuento);
+                setSelectedOption("discounts-modify");
+              }}
+            />
+          );
       case "discounts-new":
         return <Discounts_New />;
       case "pagos-all":
