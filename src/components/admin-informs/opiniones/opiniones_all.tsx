@@ -1,7 +1,6 @@
 import { HiChatBubbleLeft } from "react-icons/hi2";
 import BlueButton from "@/components/admin/buttons/blueButton";
 import { MdAddComment } from "react-icons/md";
-import { RxAvatar } from "react-icons/rx";
 import { GiBlackFlag } from "react-icons/gi";
 import { BsTrash3 } from "react-icons/bs";
 

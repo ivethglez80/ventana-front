@@ -1,4 +1,4 @@
-// @ts-ignore
+
 
 import { GiTicket } from "react-icons/gi";
 import { BsTrash3 } from "react-icons/bs";

@@ -39,10 +39,10 @@ export default function Dashboard() {
   const [editingOpinion, setEditingOpinion] = useState<any | null>(null);
   console.log("selectedOption:", selectedOption);
 
-  const handleOptionChange = (option: string) => {
-    setEditingDiscount(null); 
-    setSelectedOption(option);
-  };
+  // const handleOptionChange = (option: string) => {
+  //   setEditingDiscount(null); 
+  //   setSelectedOption(option);
+  // };
   const renderContent = () => {
     if (selectedOption === "discounts-modify" && editingDiscount) {
       return (
