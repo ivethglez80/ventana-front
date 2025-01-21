@@ -2,6 +2,9 @@ import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaCircleMinus } from "react-icons/fa6";
+import { FaCheck } from "react-icons/fa";
+import { FaX } from "react-icons/fa6";
+import { BsTrash3 } from "react-icons/bs";
 
 const reservas = [    
      {
@@ -9,30 +12,37 @@ const reservas = [
         compra:"2024-12-23T18:00:00Z",
         nombre: "Trvelyn",
         apellido: "Jones",
-        fechaShow: "2024-12-23T18:00:00Z"
+        fechaShow: "2024-12-23T18:00:00Z",
+        pagado: true
      },
      {
         id:2464,
         compra:"2024-12-23T18:00:00Z",
         nombre: "Trvelyn",
         apellido: "Jones",
-        fechaShow: "2024-12-23T18:00:00Z"
+        fechaShow: "2024-12-23T18:00:00Z",
+        pagado: false
      },
      {
         id:2465,
         compra:"2024-12-23T18:00:00Z",
         nombre: "Trvelyn",
         apellido: "Jones",
-        fechaShow: "2024-12-23T18:00:00Z"
+        fechaShow: "2024-12-23T18:00:00Z",
+        pagado: true
      },    
 ]
 
 
-export default function Reservas () {
+export default function Reservas ({ detalle }: { detalle: (id: number) => void }) {
     const [openDetail, setOpenDetail] = useState<number | null>(null);
     const toggleDetail = (id: number) => {
         setOpenDetail((prevId) => (prevId === id ? null : id));
     }
+    const EliminaRegistro = () => {
+        alert("esta seguro que quiere eliminar el registro?")
+    }
+ 
     return (
         <>
        <div className="bg-grayD h-full w-full md:w-[1000px] rounded-xl text-grayL px-6 pb-6">
@@ -68,7 +78,7 @@ export default function Reservas () {
                         {
                             reservas.map((src, index)=>(
                                 <tr key={index}
-                                className={`${((index%2)==0) ? "bg-blueD" : "bg-blueL"} hover:text-blueB cursor-pointer`}
+                                className={`${((index%2)==0) ? "bg-blueD" : "bg-blueL"} hover:text-blueB cursor-pointer relative`}
                                 >
                                     <td className="text-start pl-2 py-2 border-x-3 border-grayD" >
                                         <span className="flex flex-row gap-2 items-center">
@@ -77,7 +87,9 @@ export default function Reservas () {
                                             ? (<FaCircleMinus className="text-red-500 text-lg"   onClick={()=>toggleDetail(src.id)}/>)
                                             : (<FaCirclePlus  className="text-green-500 text-lg" onClick={()=>toggleDetail(src.id)}/>)
                                         }
-                                        {src.id}
+                                    <span onClick={() => detalle(src.id)}>
+                                        {src.id}                                       
+                                        </span>
                                         </span>
                                     </td>
                                     <td className="text-start pl-2 py-2 border-x-3 border-grayD" >
@@ -92,6 +104,58 @@ export default function Reservas () {
                                     <td className="text-start pl-2 py-2 border-x-3 border-grayD" >
                                         {src.fechaShow}
                                     </td>
+                                    {
+                                            openDetail === src.id  && (
+                                                <div className="bg-grayD absolute left-8 mt-8 w-[420px] z-20 hover:text-grayL p-4 border border-grayL border-t-transparent">                                                   
+                                                    <span className="flex flex-row border-b-2 border-grayL w-full h-full">
+                                                     <p className="w-1/4">
+                                                        Show
+                                                        </p>
+                                                        <p className="text-sm text-end w-full">
+                                                        CENA + SHOW DE TANGO Y FOLCLORE
+                                                            </p>   
+                                                    </span>
+
+                                                    <span className="flex flex-row border-b-2 border-grayL w-full">
+                                                        <p className="w-1/4">
+                                                            Descuento
+                                                        </p>
+
+                                                        <p className="text-sm text-end w-full">
+
+                                                        </p>
+                                                    </span>
+                                                    <span className="flex flex-row border-b-2 border-grayL w-full">
+                                                        <p className="w-1/4">
+                                                            Total
+                                                        </p>
+                                                        <p className="text-sm text-end w-full">
+                                                            USD 520.00
+                                                        </p>
+                                                    </span>
+                                                    <span  className="flex flex-row border-b-2 border-grayL w-full">
+                                                        <p className="w-1/4">
+                                                            Estado
+                                                        </p>
+                                                        <span  className="flex justify-end w-full">
+                                                            <span className="flex flex-row gap-2">
+                                                            {
+                                                                src.pagado ? <FaCheck /> : <FaX />
+                                                            }
+                                                            <p className="text-sm text-end w-full">
+                                                            {
+                                                                src.pagado? "APROBADO" : "RECHAZADO"
+                                                            }
+                                                            </p>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                        <span className="flex justify-end pr-6 pt-2 hover:text-blueB">
+                                                        <BsTrash3 onClick={EliminaRegistro}/>
+                                                        </span>
+                                                </div>
+                                            )
+                                        }
                                 </tr>
                             ))
                         }

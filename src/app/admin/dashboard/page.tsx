@@ -5,6 +5,7 @@ import Lateral_Menu from "@/components/admin/lateral_menu";
 import Upper_Menu from "@/components/admin/upper_menu";
 import Panoramic from "@/components/admin-informs/panoramic/panoramic";
 import Reservas from "@/components/admin-informs/reservas/reservas";
+import ReservaDetalle from "../../../components/admin-informs/reservas/reservasDetalle";
 import Discounts_All from "@/components/admin-informs/discounts/discounts-all";
 import Discounts_New from "@/components/admin-informs/discounts/discounts-new";
 import Discount_modify from "@/components/admin-informs/discounts/discounts-modify";
@@ -28,6 +29,7 @@ import Settings from "@/components/admin-informs/settings/settings";
 import Users_new from "@/components/admin-informs/Users/users_new";
 import Users_all from "@/components/admin-informs/Users/users_all";
 
+
 export default function Dashboard() {
   const [menuExpanded, setMenuExpanded] = useState(true);
   const toggleMenu = () => {
@@ -37,6 +39,7 @@ export default function Dashboard() {
   const [selectedOption, setSelectedOption] = useState<string>("Home");
   const [editingDiscount, setEditingDiscount] = useState<any | null>(null);
   const [editingOpinion, setEditingOpinion] = useState<any | null>(null);
+  const [selectedReservationId, setSelectedReservationId] = useState<number | null>(null);
   console.log("selectedOption:", selectedOption);
 
   // const handleOptionChange = (option: string) => {
@@ -57,11 +60,26 @@ export default function Dashboard() {
         <Opiniones_mod  opinion={editingOpinion} />
       )
     }
+    if (selectedOption === "reserva-detalle" && selectedReservationId !== null) {
+      return (
+        <ReservaDetalle
+          id={selectedReservationId!}         
+        />
+      );
+    }
     switch (selectedOption) {
       case "Home":
         return <Panoramic />;
-      case "Reservas":
-        return <Reservas />;
+      
+        case "Reservas":
+        return (
+          <Reservas
+          detalle={(id) => {
+            setSelectedReservationId(id);
+            setSelectedOption("reserva-detalle");
+          }}
+        />
+      );
         case "discounts-all":
           return (
             <Discounts_All
@@ -136,7 +154,11 @@ export default function Dashboard() {
           >
             <Lateral_Menu 
             menuExpanded={menuExpanded} 
-            onSelectOption={setSelectedOption}
+            onSelectOption={(option) => {
+              setSelectedOption(option);
+              if (option !== "reserva-detalle") {
+                setSelectedReservationId(null);}
+            }}
             />
           </div>
 
