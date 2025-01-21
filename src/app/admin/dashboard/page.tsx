@@ -29,6 +29,23 @@ import Settings from "@/components/admin-informs/settings/settings";
 import Users_new from "@/components/admin-informs/Users/users_new";
 import Users_all from "@/components/admin-informs/Users/users_all";
 
+type Discount = {
+  codigo: string;
+  descuento: string;
+};
+
+type Opinion = {
+  id: number;
+  langId: number;
+  img: string;
+  name: string;
+  title: string;
+  text: string;
+  valor: number;
+  date: string;
+  status: boolean;
+};
+
 
 export default function Dashboard() {
   const [menuExpanded, setMenuExpanded] = useState(true);
@@ -37,8 +54,8 @@ export default function Dashboard() {
   };
 
   const [selectedOption, setSelectedOption] = useState<string>("Home");
-  const [editingDiscount, setEditingDiscount] = useState<any | null>(null);
-  const [editingOpinion, setEditingOpinion] = useState<any | null>(null);
+  const [editingDiscount, setEditingDiscount] = useState<Discount  | null>(null);
+  const [editingOpinion, setEditingOpinion] = useState<Opinion  | null>(null);
   const [selectedReservationId, setSelectedReservationId] = useState<number | null>(null);
   console.log("selectedOption:", selectedOption);
 

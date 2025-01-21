@@ -24,7 +24,7 @@ export default function Modulo_ReservaDetalle({id}:reservaId) {
           </p>
         </div>
 
-        <div className="py-6">
+        <div key={id} className="py-6">
             <span>
                 <p>
                 Fecha de registro
