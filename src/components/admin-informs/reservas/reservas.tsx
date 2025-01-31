@@ -106,7 +106,8 @@ export default function Reservas ({ detalle }: { detalle: (id: number) => void }
                                     </td>
                                     {
                                             openDetail === src.id  && (
-                                                <div className="bg-grayD absolute left-8 mt-8 w-[420px] z-20 hover:text-grayL p-4 border border-grayL border-t-transparent">                                                   
+                                                <td>
+                                                <div className="bg-grayD absolute left-8 mt-4 w-[420px] z-20 hover:text-grayL p-4 border border-grayL border-t-transparent">                                                   
                                                     <span className="flex flex-row border-b-2 border-grayL w-full h-full">
                                                      <p className="w-1/4">
                                                         Show
@@ -154,6 +155,7 @@ export default function Reservas ({ detalle }: { detalle: (id: number) => void }
                                                         <BsTrash3 onClick={EliminaRegistro}/>
                                                         </span>
                                                 </div>
+                                                </td>
                                             )
                                         }
                                 </tr>

@@ -11,8 +11,10 @@ import Discounts_New from "@/components/admin-informs/discounts/discounts-new";
 import Discount_modify from "@/components/admin-informs/discounts/discounts-modify";
 import Pagos_All from "@/components/admin-informs/pagos/pagos_all";
 import Pagos_new from "@/components/admin-informs/pagos/pagos_new";
+import Pago_Detalle from "@/components/admin-informs/pagos/moduloDetalle/pagosDetalle";
 import Shows_all from "@/components/admin-informs/shows/shows_all";
 import Shows_new from "@/components/admin-informs/shows/shows_new";
+import Show_Detalle from "@/components/admin-informs/shows/moduloDetalle/showDetalle";
 import Menus_new from "@/components/admin-informs/menus/menus_new";
 import Menus_all from "@/components/admin-informs/menus/menus_all";
 import Opiniones_all from "@/components/admin-informs/opiniones/opiniones_all";
@@ -57,6 +59,8 @@ export default function Dashboard() {
   const [editingDiscount, setEditingDiscount] = useState<Discount  | null>(null);
   const [editingOpinion, setEditingOpinion] = useState<Opinion  | null>(null);
   const [selectedReservationId, setSelectedReservationId] = useState<number | null>(null);
+  const [selectedPagoId, setSelectedPagoId] = useState<number | null>(null);
+  const [selectedShowId, setSelectedShowId] = useState<number | null>(null);
   console.log("selectedOption:", selectedOption);
 
   // const handleOptionChange = (option: string) => {
@@ -81,6 +85,20 @@ export default function Dashboard() {
       return (
         <ReservaDetalle
           id={selectedReservationId!}         
+        />
+      );
+    }
+    if (selectedOption === "pago-detalle" && selectedPagoId !== null) {
+      return (
+        <Pago_Detalle
+          id={selectedPagoId!}         
+        />
+      );
+    }
+    if (selectedOption === "show-detalle" && selectedShowId !== null) {
+      return (
+        <Show_Detalle
+          id={selectedShowId!}         
         />
       );
     }
@@ -109,11 +127,25 @@ export default function Dashboard() {
       case "discounts-new":
         return <Discounts_New />;
       case "pagos-all":
-        return  <Pagos_All />
+        return (
+          <Pagos_All
+          detalle={(id) => {
+            setSelectedPagoId(id);
+            setSelectedOption("pago-detalle");
+          }}
+        />
+      );       
       case "pagos-new":
         return <Pagos_new />  
       case "shows-all":
-        return <Shows_all />
+        return (
+          <Shows_all
+            detalle={(id) => {
+            setSelectedShowId(id);
+            setSelectedOption("show-detalle");
+          }}
+        />
+      );  
       case "shows-new":
         return <Shows_new />
       case "menus-new":
@@ -158,8 +190,8 @@ export default function Dashboard() {
   return (
     <>
       <div
-        className={`bg-blueD text-white w-screen relative
-        ${menuExpanded ? "h-screen md:h-full" : "h-full"}
+        className={`bg-blueD text-white w-full relative
+        ${menuExpanded ? "h-full" : "h-full"}
         `}
       >
         <div className="flex flex-row z-10">
@@ -191,7 +223,7 @@ export default function Dashboard() {
 
         {/* informs */}
         <div
-          className={`absolute top-16 z-0
+          className={`absolute top-16 z-0 bg-blueD pb-8
           ${menuExpanded ? "left-2 md:left-60 w-full pr-4" : "left-20 md:left-32"}
           `}
         >

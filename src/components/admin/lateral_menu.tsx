@@ -108,7 +108,7 @@ export default function Lateral_Menu({
           </p>
         </div>
 
-        <div className="h-full">
+        <div className="h-full ">
           <div
             className={`flex flex-row justify-start gap-4 py-4 pl-8
                     ${menuExpanded ? "block" : "hidden"}
@@ -126,8 +126,8 @@ export default function Lateral_Menu({
 
         <div>
           <ul
-            className={`w-full
-                ${menuExpanded ? "pl-8 pb-36" : "pl-0 pb-6"}
+            className={`w-full h-full
+                ${menuExpanded ? "pl-8 pb-72" : "pl-0 pb-6"}
                 `}
           >
             {menuItems.map((item, index) => (
