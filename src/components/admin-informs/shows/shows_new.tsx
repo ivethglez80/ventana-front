@@ -153,7 +153,7 @@ export default function Shows_new () {
                      <input type="text" placeholder="140" className="inputDash" />
                    </div>
              
-                   <div className="pt-4 flex flex-row items-center gap-2 pt-8 pb-6">
+                   <div className="pt-4 flex flex-row items-center gap-2 pb-6">
                      <p>Imagen</p>
                      <button
                        onClick={handleFileSelect}
