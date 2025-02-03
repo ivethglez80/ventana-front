@@ -4,7 +4,7 @@ import Switcher4 from "@/components/admin/buttons/toggleSwitch";
 import { useState } from "react";
 import { BsTrash3 } from "react-icons/bs";
 
-export default function Menus_all() {
+export default function Menus_all({ detalle }: { detalle: (id: number) => void }) {
   const menus = [
     {
       id: 1,
@@ -71,6 +71,12 @@ export default function Menus_all() {
     window.open(url, "_blank");
   };
 
+  const EliminaRegistro = () => {
+    alert("esta seguro que quiere eliminar el registro?")
+}
+
+const [pageSize, setPageSize] = useState<number>(10);
+
   return (
     <div className="bg-grayD h-full w-full md:w-[900px] rounded-xl text-grayL px-6 pb-6">
       <div className="flex flex-row gap-2 border-b-1 border-grayL pt-4 pb-2">
@@ -79,12 +85,32 @@ export default function Menus_all() {
           <b> Menú /</b> <span className="text-base">Lista</span>
         </p>
       </div>
-      <div>
+
+      <div className="pt-6">
+      <span className="flex flex-row gap-2 items-center">
+          <p>Mostrar</p>
+          <select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+            className="bg-grayM p-1"
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
+          <p>registros</p>
+        </span>
+      </div>
+      
+      <div className="pt-6">
         <table className="w-full">
           <thead>
             <tr>
               <th>
-                <p>Nombre</p>
+                <p className="text-start pl-2">
+                  Nombre
+                </p>
               </th>
               <th>
                 <p>Menú español</p>
@@ -111,7 +137,11 @@ export default function Menus_all() {
               <tr key={src.id}  className={`h-12
                 ${index % 2 === 0 ? "bg-blueD" : "bg-blueL"}
                 `}>
-                <td>{src.nombre}</td>
+                <td>
+                  <p className="pl-2 hover:text-blueB cursor-pointer" onClick={() => detalle(src.id)}>
+                  {src.nombre}
+                  </p>
+                </td>
                 <td>
                   <button onClick={() => handleOpenPDF(src.menu_es)} className="flex justify-center w-full items-center">
                     <ImFilePdf className="cursor-pointer text-2xl hover:text-blueB" />
@@ -135,8 +165,8 @@ export default function Menus_all() {
                 <td>
                   <Switcher4 isChecked={estado[src.id]} onToggle={() => toggleEstado(src.id)} />
                 </td>
-                <td className="hover:text-blueB ">
-                  <BsTrash3 />
+                <td className="hover:text-blueB pr-2">
+                  <BsTrash3 onClick={EliminaRegistro}/>
                 </td>
               </tr>
             ))}

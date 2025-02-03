@@ -42,6 +42,7 @@ export default function Reservas ({ detalle }: { detalle: (id: number) => void }
     const EliminaRegistro = () => {
         alert("esta seguro que quiere eliminar el registro?")
     }
+    const [pageSize, setPageSize] = useState<number>(10);
  
     return (
         <>
@@ -52,6 +53,23 @@ export default function Reservas ({ detalle }: { detalle: (id: number) => void }
                    <b>Reservas  /</b> <span className="text-base">Lista</span>
                  </p>
                </div>
+
+               <div className="py-6">
+      <span className="flex flex-row gap-2 items-center">
+          <p>Mostrar</p>
+          <select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+            className="bg-grayM p-1"
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
+          <p>registros</p>
+        </span>
+      </div>
 
                <div>
                 <table className="table-auto w-full">

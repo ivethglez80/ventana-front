@@ -17,6 +17,7 @@ import Shows_new from "@/components/admin-informs/shows/shows_new";
 import Show_Detalle from "@/components/admin-informs/shows/moduloDetalle/showDetalle";
 import Menus_new from "@/components/admin-informs/menus/menus_new";
 import Menus_all from "@/components/admin-informs/menus/menus_all";
+import Menu_detalle from "@/components/admin-informs/menus/menu_detalle";
 import Opiniones_all from "@/components/admin-informs/opiniones/opiniones_all";
 import Opiniones_new from "@/components/admin-informs/opiniones/opiniones_new";
 import Opiniones_mod from "@/components/admin-informs/opiniones/opiniones_mod";
@@ -61,6 +62,7 @@ export default function Dashboard() {
   const [selectedReservationId, setSelectedReservationId] = useState<number | null>(null);
   const [selectedPagoId, setSelectedPagoId] = useState<number | null>(null);
   const [selectedShowId, setSelectedShowId] = useState<number | null>(null);
+  const [selectedMenuId, setSelectedMenuId] = useState<number | null>(null);
   console.log("selectedOption:", selectedOption);
 
   // const handleOptionChange = (option: string) => {
@@ -99,6 +101,13 @@ export default function Dashboard() {
       return (
         <Show_Detalle
           id={selectedShowId!}         
+        />
+      );
+    }
+    if (selectedOption === "menu-detalle" && selectedMenuId !== null) {
+      return (
+        <Menu_detalle
+          id={selectedMenuId!}         
         />
       );
     }
@@ -151,7 +160,14 @@ export default function Dashboard() {
       case "menus-new":
         return <Menus_new />
       case "menus-all":
-        return <Menus_all />
+        return (
+          <Menus_all
+            detalle={(id) => {
+            setSelectedMenuId(id);
+            setSelectedOption("menu-detalle");
+          }}
+        />
+      );  
       case "opiniones-new":
         return <Opiniones_new />  
       case "opiniones-all":

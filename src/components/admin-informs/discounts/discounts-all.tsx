@@ -37,7 +37,7 @@ export default function Discounts_All({ onEdit }: { onEdit: (descuento: any) => 
       )
     );
   };
-
+  const [pageSize, setPageSize] = useState<number>(10);
   return (
     <>
       <div className="bg-grayD h-full w-full md:w-[700px] rounded-xl text-grayL px-6 pb-6">
@@ -50,11 +50,20 @@ export default function Discounts_All({ onEdit }: { onEdit: (descuento: any) => 
 
         <div className="pt-12 pb-16">
           <span className="flex flex-col md:flex-row justify-between">
-            <span className="flex flex-col md:flex-row items-center pb-6 md:pb-0">
-              <p>Mostrar</p>
-              <input type="text" placeholder="10" className="inputDash" />
-              <p>registros</p>
-            </span>
+          <span className="flex flex-row gap-2 items-center">
+          <p>Mostrar</p>
+          <select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+            className="bg-grayM p-1"
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
+          <p>registros</p>
+        </span>
             <span className="flex flex-row items-center">
               <p>Buscar:</p>
               <input className="inputDash" />
