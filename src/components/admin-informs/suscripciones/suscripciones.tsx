@@ -1,3 +1,4 @@
+import { exportToExcel } from "@/components/admin/utils/excelUtils";
 import { BsNewspaper } from "react-icons/bs";
 import { useState } from "react";
 import { BsTrash3 } from "react-icons/bs";
@@ -59,14 +60,15 @@ export default function Suscripciones() {
     },
   ];
 
+  const handleExport = () => {
+    exportToExcel(suscripciones_data, "Suscripciones");
+  };
+
   const [pageSize, setPageSize] = useState<number>(10);
   const EliminaRegistro = () => {
     alert("esta seguro que quiere eliminar el registro?");
   };
-  const handleSave = () => {
-    console.log("Guardando");
-    alert("Guardando...");
-  };
+
   return (
     <>
       <div className="bg-grayD h-full w-full md:w-[700px] rounded-xl text-grayL px-6 pb-6">
@@ -78,7 +80,7 @@ export default function Suscripciones() {
           </p>
             </span>
             <span>
-                <BlueButton text="Exportar a Excel" onClick={handleSave} icon={FaRegFileExcel} />
+                <BlueButton text="Exportar a Excel" onClick={handleExport} icon={FaRegFileExcel} />
             </span>
         </div>
 

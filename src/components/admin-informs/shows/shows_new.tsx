@@ -18,7 +18,7 @@ export default function Shows_new () {
       };
       const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
-          setFileName(event.target.files[0].name); // Guarda el nombre del archivo seleccionado
+          setFileName(event.target.files[0].name); 
         }
       };
       const [languaje, setLanguaje] = useState("Español");
