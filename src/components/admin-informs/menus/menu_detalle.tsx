@@ -14,7 +14,7 @@ export default function Menu_detalle({ id }: MenuDetalleProps) {
     alert("Guardando...");
   };
 
-  const [isChecked, setIsChecked] = useState(false);
+  
   const [fileName, setFileName] = useState<string>("Ningún archivo seleccionado");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
