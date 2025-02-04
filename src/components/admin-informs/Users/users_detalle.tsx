@@ -2,8 +2,11 @@ import { FaUsers } from "react-icons/fa";
 import { BiSave } from "react-icons/bi";
 import BlueButton from "@/components/admin/buttons/blueButton";
 
+type UsersDetalleProps = {
+    id: number;
+  };
 
-export default function Users_new() {
+export default function Users_detalle({id}:UsersDetalleProps) {
   const handleSave = () => {
     console.log("Guardando");
     alert("Guardando...");
@@ -14,7 +17,7 @@ export default function Users_new() {
       <div className="flex flex-row gap-2 border-b border-grayL pt-4 pb-2">
         <FaUsers className="text-2xl" />
         <p className="text-lg">
-          <b> Usuarios /</b> <span className="text-base">Nuevo</span>
+          <b> Usuarios /</b> <span className="text-base">Modifica id: {id}</span>
         </p>
       </div>
 

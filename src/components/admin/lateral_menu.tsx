@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SideMenuButton from "./buttons/sideMenuButton";
-import { IoIosHome } from "react-icons/io";
+import { FcStatistics } from "react-icons/fc";
 import { RxAvatar } from "react-icons/rx";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiTicket } from "react-icons/gi";
@@ -33,7 +33,7 @@ export default function Lateral_Menu({
     name: "Luciano",
   };
   const menuItems = [
-    { icon: IoIosHome, option: "Home", dropArrow: false },
+    { icon: FcStatistics, option: "Estadísticas", dropArrow: false },
     { icon: FaShoppingCart, option: "Reservas", dropArrow: false },
     {
       icon: GiTicket,

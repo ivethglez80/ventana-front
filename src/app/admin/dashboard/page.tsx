@@ -32,6 +32,7 @@ import Traducciones_detalle from "@/components/admin-informs/traducciones/traduc
 import Settings from "@/components/admin-informs/settings/settings";
 import Users_new from "@/components/admin-informs/Users/users_new";
 import Users_all from "@/components/admin-informs/Users/users_all";
+import Users_detalle from "@/components/admin-informs/Users/users_detalle";
 
 type Discount = {
   codigo: string;
@@ -65,6 +66,7 @@ export default function Dashboard() {
   const [selectedShowId, setSelectedShowId] = useState<number | null>(null);
   const [selectedMenuId, setSelectedMenuId] = useState<number | null>(null);
   const [selectedTraduccionId, setSelectedTraduccionId] = useState<number | null>(null);
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
   console.log("selectedOption:", selectedOption);
 
   // const handleOptionChange = (option: string) => {
@@ -117,6 +119,13 @@ export default function Dashboard() {
       return (
         <Traducciones_detalle
           id={selectedTraduccionId!}         
+        />
+      );
+    }
+    if (selectedOption === "user-detalle" && selectedUserId !== null) {
+      return (
+        <Users_detalle
+          id={selectedUserId!}         
         />
       );
     }
@@ -212,7 +221,14 @@ export default function Dashboard() {
       case "usuarios-new":
         return <Users_new />
       case "usuarios-all":
-        return <Users_all />  
+        return (
+          <Users_all
+            detalle={(id) => {
+            setSelectedUserId(id);
+            setSelectedOption("user-detalle");
+          }}
+        />
+      );  
 
       default:
         return <Panoramic />;
