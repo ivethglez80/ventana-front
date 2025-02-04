@@ -127,7 +127,7 @@ export default function Lateral_Menu({
         <div>
           <ul
             className={`w-full h-full
-                ${menuExpanded ? "pl-8 pb-72" : "pl-0 pb-6"}
+                ${menuExpanded ? "pl-8 pb-[1200px]" : "pl-0 pb-6"}
                 `}
           >
             {menuItems.map((item, index) => (

@@ -28,6 +28,7 @@ import GaleriaShows_new from "@/components/admin-informs/galeriaShows/galeriaSho
 import GaleriaShows_all from "@/components/admin-informs/galeriaShows/galeriaShows_all";
 import Traducciones_new from "@/components/admin-informs/traducciones/traducciones_new";
 import Traducciones_all from "@/components/admin-informs/traducciones/traducciones_all";
+import Traducciones_detalle from "@/components/admin-informs/traducciones/traducciones_detalle";
 import Settings from "@/components/admin-informs/settings/settings";
 import Users_new from "@/components/admin-informs/Users/users_new";
 import Users_all from "@/components/admin-informs/Users/users_all";
@@ -63,6 +64,7 @@ export default function Dashboard() {
   const [selectedPagoId, setSelectedPagoId] = useState<number | null>(null);
   const [selectedShowId, setSelectedShowId] = useState<number | null>(null);
   const [selectedMenuId, setSelectedMenuId] = useState<number | null>(null);
+  const [selectedTraduccionId, setSelectedTraduccionId] = useState<number | null>(null);
   console.log("selectedOption:", selectedOption);
 
   // const handleOptionChange = (option: string) => {
@@ -108,6 +110,13 @@ export default function Dashboard() {
       return (
         <Menu_detalle
           id={selectedMenuId!}         
+        />
+      );
+    }
+    if (selectedOption === "traduccion-detalle" && selectedTraduccionId !== null) {
+      return (
+        <Traducciones_detalle
+          id={selectedTraduccionId!}         
         />
       );
     }
@@ -190,7 +199,14 @@ export default function Dashboard() {
       case "traducciones-new":
         return <Traducciones_new />
       case "traducciones-all":
-        return <Traducciones_all />  
+        return (
+          <Traducciones_all
+            detalle={(id) => {
+            setSelectedTraduccionId(id);
+            setSelectedOption("traduccion-detalle");
+          }}
+        />
+      );  
       case "Configuración":
         return <Settings />
       case "usuarios-new":
