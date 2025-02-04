@@ -1,5 +1,8 @@
 import { FaBook } from "react-icons/fa";
 import { useState, useRef } from "react";
+import { BiSave } from "react-icons/bi";
+import BlueButton from "@/components/admin/buttons/blueButton";
+
 
 type MenuDetalleProps = {
     id: number;
@@ -74,7 +77,7 @@ export default function Menu_detalle({ id }: MenuDetalleProps) {
               {/* ✅ Permitir solo archivos PDF */}
               <input
                 type="file"
-                accept="application/pdf" // SOLO PERMITE PDF
+                accept="application/pdf" 
                 ref={fileInputRef}
                 className="hidden"
                 onChange={handleFileChange}
@@ -82,6 +85,9 @@ export default function Menu_detalle({ id }: MenuDetalleProps) {
             </div>
           </div>
         </div>
+  <div className="pt-4 border-t border-grayL flex justify-end">
+                            <BlueButton text="Guardar" onClick={handleSave} icon={BiSave} />            
+                            </div>
       </div>
     </>
   );

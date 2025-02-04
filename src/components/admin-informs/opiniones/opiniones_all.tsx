@@ -4,8 +4,19 @@ import { MdAddComment } from "react-icons/md";
 import { GiBlackFlag } from "react-icons/gi";
 import { BsTrash3 } from "react-icons/bs";
 
+interface Opinion {
+  id: number;
+  langId: number;
+  img: string;
+  name: string;
+  title: string;
+  text: string;
+  valor: number;
+  date: string;
+  status: boolean;
+}
 type OpinionesAllProps = {
-    onEdit: (opinion: any) => void; 
+    onEdit: (opinion: Opinion) => void; 
   };
 
 export default function Opiniones_all({ onEdit }: OpinionesAllProps) {

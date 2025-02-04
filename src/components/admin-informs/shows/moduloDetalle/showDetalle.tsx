@@ -40,7 +40,7 @@ export default function Show_Detalle({ id }: ShowDetalleProps) {
       <div className="flex flex-row gap-2 border-b border-grayL pt-4 pb-2">
         <FaMusic className="text-2xl" />
         <p className="text-lg">
-          <b>Show /</b> <span className="text-base">Editar</span>
+          <b>Show /</b> <span className="text-base">Editar id: {id}</span>
         </p>
       </div>
 

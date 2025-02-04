@@ -5,9 +5,14 @@ import { BsTrash3 } from "react-icons/bs";
 import { useState } from "react";
 import Switcher4 from "@/components/admin/buttons/toggleSwitch";
 
+interface Descuento {
+  id: number;
+  codigo: string;
+  descuento: string;
+  estado: boolean;
+}
 
-
-export default function Discounts_All({ onEdit }: { onEdit: (descuento: any) => void }) {
+export default function Discounts_All({ onEdit }: { onEdit: (descuento: Descuento) => void }) {
   const [descuentos, setDescuentos] = useState([
     {
       id: 1,

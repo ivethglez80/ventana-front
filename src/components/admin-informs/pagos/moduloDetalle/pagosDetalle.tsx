@@ -20,7 +20,7 @@ export default function Pago_Detalle({ id }: PagoDetalleProps) {
         <div className="flex flex-row gap-2 border-b border-grayL pt-4 pb-2">
           <FaDollarSign className="text-2xl" />
           <p className="text-lg">
-            <b>Pagos /</b> <span className="text-base">Editar</span>
+            <b>Pagos /</b> <span className="text-base">Editar id: {id}</span>
           </p>
         </div>
 

@@ -1,5 +1,7 @@
 import { FaBook } from "react-icons/fa";
 import { useState, useRef } from "react";
+import { BiSave } from "react-icons/bi";
+import BlueButton from "@/components/admin/buttons/blueButton";
 
 export default function Menus_new() {
   const handleSave = () => {
@@ -7,7 +9,7 @@ export default function Menus_new() {
     alert("Guardando...");
   };
 
-  const [isChecked, setIsChecked] = useState(false);
+
   const [fileName, setFileName] = useState<string>("Ningún archivo seleccionado");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -78,6 +80,9 @@ export default function Menus_new() {
             </div>
           </div>
         </div>
+         <div className="pt-4 border-t border-grayL flex justify-end">
+                                    <BlueButton text="Guardar" onClick={handleSave} icon={BiSave} />            
+                                    </div>
       </div>
     </>
   );

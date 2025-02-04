@@ -1,6 +1,11 @@
 import * as XLSX from "xlsx";
 
-export const exportToExcel = (data: any[], fileName: string) => {
+interface SubscriptionData {
+  date: string;
+  email: string;
+}
+
+export const exportToExcel = (data: SubscriptionData[], fileName: string) => {
   const formattedData = data.map((item) => ({
     Fecha: new Date(item.date).toLocaleString("es-AR", {
       day: "2-digit",
