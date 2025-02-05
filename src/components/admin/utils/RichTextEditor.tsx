@@ -54,8 +54,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ initialValue, onChange 
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   return (
-    <Slate editor={editor} initialValue={initialValue} onChange={onChange}>
-      {/* 🔹 Agregamos la barra de herramientas aquí */}
+      <div className="max-h-[300px] overflow-y-auto border p-2 rounded">
+    <Slate editor={editor} initialValue={initialValue} onChange={onChange}>      
       <Toolbar editor={editor} />
       <Editable
         renderElement={renderElement}
@@ -66,14 +66,15 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ initialValue, onChange 
         onKeyDown={(event) => {
           for (const hotkey in HOTKEYS) {
             if (isHotkey(hotkey, event)) {
-              event.preventDefault();
-              const mark = HOTKEYS[hotkey as keyof typeof HOTKEYS];
-              toggleMark(editor, mark);
+                event.preventDefault();
+                const mark = HOTKEYS[hotkey as keyof typeof HOTKEYS];
+                toggleMark(editor, mark);
             }
-          }
-        }}
-      />
+        }
+    }}
+    />
     </Slate>
+    </div>
   );
 };
 

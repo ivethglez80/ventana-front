@@ -38,7 +38,7 @@ export default function Shows_new() {
   const [editorValue, setEditorValue] = useState<Descendant[]>([
     {
       type: 'paragraph', 
-      children: [{ text: 'Initial text.' }], 
+      children: [{ text: 'Descripcion:' }], 
     } as CustomElement, 
   ]);
 
